@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+
+<!--  curieux que vous êtes à venir pointer votre nez ici.
+      site fait en 2spi pour le 3ème rendu, j'aurai aimé
+      faire différemment, mieux, mais bon. c pas trop en bordel remerciez-moi 
+            ~~bettina -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carnet en ligne</title>
+    <link rel="icon" type="image/png" href="elsite.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        iframe#panorama {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+            display: block;
+        }
+
+        .clickable-image {
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .clickable-image:hover {
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            max-width: 90vw;
+            max-height: 80vh;
+            background: #f5f5f7;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .modal.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            background: linear-gradient(180deg, #e8e8e8 0%, #d0d0d0 100%);
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #b3b3b3;
+            cursor: move;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .modal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        .modal-button.close {
+            background: linear-gradient(135deg, #ff5f57 0%, #ff3b30 100%);
+        }
+
+        .modal-button.minimize {
+            background: linear-gradient(135deg, #ffbd2e 0%, #ffaa00 100%);
+        }
+
+        .modal-button.maximize {
+            background: linear-gradient(135deg, #28c840 0%, #20b830 100%);
+        }
+
+        .modal-title {
+            flex: 1;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 500;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .modal-content {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+            color: #1d1d1f;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 999;
+        }
+
+        .modal-overlay.active {
+            display: block;
+        }
+
+        #typing-text {
+            position: fixed;
+            bottom: 90px;
+            left: 80px;
+            max-width: calc(100vw - 100px);
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        #typing-text.typing::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+       
+        #typing-text2 {
+            position: fixed;
+            bottom: 200px;
+            left: 80px;
+            max-width: calc(100vw - 100px);
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        #typing-text2.typing::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+
+        
+        #typing-text3 {
+            position: fixed;
+            top: 20px;
+            left: 80px;
+            max-width: calc(100vw - 100px);
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        #typing-text3.typing::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+    </style>
+</head>
+<body>
+   
+   <div id="typing-text">
+   </div>
+   <div id="typing-text2">
+   </div>
+   <div id="typing-text3">
+   </div>
+
+   <iframe id="panorama" src="https://www.google.com/maps/embed?pb=!4v1768172679683!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ0V3S2pmb0FF!2m2!1d34.76750512789452!2d36.33647428325438!3f220!4f0!5f0.7820865974627469" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+   <!-- je vais pas utiliser tout ça je pense à effacer si besoin 
+   <img src="ecran.png" class="clickable-image" style="top: 90px; left: 30%; width: 150px; height: 150px;" data-modal="modal1">
+   <img src="image2.jpg" class="clickable-image" style="top: 50px; right: 50px; width: 80px; height: 80px;" data-modal="modal2">
+   -->
+
+ 
+   <div class="modal-overlay" id="overlay"></div>
+
+   <!-- ça c les fenetres modales mais bon c pas terrible -->
+   <div class="modal" id="modal1" style="left: auto; right: 20px; top: 80px; transform: none;">
+       <div class="modal-header">
+           <div class="modal-buttons">
+               <div class="modal-button close" onclick="closeModal('modal1')"></div>
+               <div class="modal-button minimize"></div>
+               <div class="modal-button maximize"></div>
+           </div>
+           <div class="modal-title">los Informationnns</div>
+       </div>
+       <div class="modal-content">
+           <h2>un titre pour la fentre </h2>
+           <p></p>
+           <p></p>
+       </div>
+   </div>
+
+ 
+   <div class="modal" id="modal2">
+       <div class="modal-header">
+           <div class="modal-buttons">
+               <div class="modal-button close" onclick="closeModal('modal2')"></div>
+               <div class="modal-button minimize"></div>
+               <div class="modal-button maximize"></div>
+           </div>
+           <div class="modal-title">l'autre fenêtre</div>
+       </div>
+       <div class="modal-content">
+           <h2></h2>
+           <p></p>
+       </div>
+   </div>
+                   <!-- voilà là cest bien galère tt ça --> 
+   <script>
+       document.querySelectorAll('.clickable-image').forEach(img => {
+           img.addEventListener('click', function() {
+               const modalId = this.getAttribute('data-modal');
+               document.getElementById(modalId).classList.add('active');
+               document.getElementById('overlay').classList.add('active');
+           });
+       });
+
+       
+       function closeModal(modalId) {
+           document.getElementById(modalId).classList.remove('active');
+           document.getElementById('overlay').classList.remove('active');
+       }
+
+     
+       document.getElementById('overlay').addEventListener('click', function() {
+           document.querySelectorAll('.modal').forEach(modal => {
+               modal.classList.remove('active');
+           });
+           this.classList.remove('active');
+       });
+
+     
+       let activeModal = null;
+       let offsetX, offsetY;
+
+       document.querySelectorAll('.modal-header').forEach(header => {
+           header.addEventListener('mousedown', function(e) {
+               activeModal = this.parentElement;
+               const rect = activeModal.getBoundingClientRect();
+               offsetX = e.clientX - rect.left;
+               offsetY = e.clientY - rect.top;
+               
+               document.addEventListener('mousemove', moveModal);
+               document.addEventListener('mouseup', stopMove);
+           });
+       });
+                           
+       function moveModal(e) {
+           if (activeModal) {
+               activeModal.style.left = (e.clientX - offsetX) + 'px';
+               activeModal.style.top = (e.clientY - offsetY) + 'px';
+               activeModal.style.transform = 'none';
+           }
+       }
+
+       function stopMove() {
+           document.removeEventListener('mousemove', moveModal);
+           document.removeEventListener('mouseup', stopMove);
+           activeModal = null;
+       }
+
+      
+       const text = "Vous êtes en Syrie, en face d'une statue de la Vierge Marie érigée en 2023. Elle est à quelques km vers votre nord, tout droit. Cette photosphère date de 2016, la statue n'existe pas encore. Mais vous êtes pourtant là avec ce savoir"; // Modifiez ce texte
+       const typingElement = document.getElementById('typing-text');
+       let charIndex = 0;
+       const typingSpeed = 100; 
+       const pauseAfterSentence = 500;
+
+       function typeWriter() {
+           if (charIndex < text.length) {
+               typingElement.textContent = text.substring(0, charIndex + 1);
+               const currentChar = text[charIndex];
+               charIndex++;
+               
+               
+               const delay = currentChar === '.' ? typingSpeed + pauseAfterSentence : typingSpeed;
+               setTimeout(typeWriter, delay);
+           } else {
+              
+               typingElement.classList.remove('typing');
+               setTimeout(() => {
+                  
+                   setTimeout(() => {
+                       typingElement2.classList.add('typing');
+                       typeWriter2();
+                   }, 10000);
+               }, 1000);
+           }
+       }
+
+       window.addEventListener('load', () => {
+           setTimeout(() => {
+               typingElement.classList.add('typing');
+               typeWriter();
+           }, 4000);
+       });
+
+       const text2 = "Regardez en bas. Il y a les débris de nombreuses constructions de sites, le lieux où l'on retombe = un site-web en arabe : mawqi’ "; // Modifiez ce texte
+       const typingElement2 = document.getElementById('typing-text2');
+       let charIndex2 = 0;
+
+       function typeWriter2() {
+           if (charIndex2 < text2.length) {
+               typingElement2.textContent = text2.substring(0, charIndex2 + 1);
+               const currentChar = text2[charIndex2];
+               charIndex2++;
+               
+              
+               const delay = currentChar === '.' ? typingSpeed + pauseAfterSentence : typingSpeed;
+               setTimeout(typeWriter2, delay);
+           } else {
+               
+               typingElement2.classList.remove('typing');
+               setTimeout(() => {
+                  
+                   setTimeout(() => {
+                       typingElement3.classList.add('typing');
+                       typeWriter3();
+                   }, 10000);
+               }, 1000);
+           }
+       }
+
+     
+       const text3 = "Derrière il y a trois mecs qui matent leurs téls. A droite, il est sur le site dédié à la statue de la Vierge et sa construction, l'autre de l'autre côté tout à gauche, sur mon Hotglue où s'amoncelle mes errements et mes grands airs, et puis le troisième, la main dans la poche, est sur ce site, celui où vous êtes, là. Il attend de pouvoir me saisir, de comprendre, puisqu'il va devenir impatient, comme vous. Le résultat de s'entretenir complaisament dans son mémoire, dans ses obsessions. "; // Modifiez ce texte
+       const typingElement3 = document.getElementById('typing-text3');
+       let charIndex3 = 0;
+
+       function typeWriter3() {
+           if (charIndex3 < text3.length) {
+               typingElement3.textContent = text3.substring(0, charIndex3 + 1);
+               const currentChar = text3[charIndex3];
+               charIndex3++;
+               
+              
+               const delay = currentChar === '.' ? typingSpeed + pauseAfterSentence : typingSpeed;
+               setTimeout(typeWriter3, delay);
+           } else {
+              
+               typingElement3.classList.remove('typing');
+               setTimeout(() => {
+                  
+                   setTimeout(() => {
+                       const link = document.createElement('a');
+                       link.href = 'نور سيأتيك ..'; 
+                       link.download = 'نور سيأتيك ..'; 
+                       document.body.appendChild(link);
+                       link.click();
+                       document.body.removeChild(link);
+                   }, 10000);
+               }, 1000);
+           }
+       }
+
+    
+   </script>
+</body>
+</html>
+
+
+
+

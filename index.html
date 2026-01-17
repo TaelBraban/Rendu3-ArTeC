@@ -323,12 +323,21 @@
               
                typingElement.classList.remove('typing');
                setTimeout(() => {
-                  
-                   setTimeout(() => {
-                       typingElement2.classList.add('typing');
-                       typeWriter2();
-                   }, 10000);
-               }, 1000);
+                 
+                   if (window.innerWidth <= 768) {
+                       typingElement.textContent = '';
+                       setTimeout(() => {
+                           typingElement2.classList.add('typing');
+                           typeWriter2();
+                       }, 1000);
+                   } else {
+                       
+                       setTimeout(() => {
+                           typingElement2.classList.add('typing');
+                           typeWriter2();
+                       }, 10000);
+                   }
+               }, 10000);
            }
        }
 
@@ -356,12 +365,21 @@
                
                typingElement2.classList.remove('typing');
                setTimeout(() => {
-                  
-                   setTimeout(() => {
-                       typingElement3.classList.add('typing');
-                       typeWriter3();
-                   }, 10000);
-               }, 1000);
+                   
+                   if (window.innerWidth <= 768) {
+                       typingElement2.textContent = '';
+                       setTimeout(() => {
+                           typingElement3.classList.add('typing');
+                           typeWriter3();
+                       }, 1000);
+                   } else {
+                       
+                       setTimeout(() => {
+                           typingElement3.classList.add('typing');
+                           typeWriter3();
+                       }, 10000);
+                   }
+               }, 10000);
            }
        }
 

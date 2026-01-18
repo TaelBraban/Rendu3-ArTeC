@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
+    <!-- vous revoilà bonsoir ! pourquoi vous obstinez vous à regarder dans mon code ?-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page 2</title>
@@ -138,7 +140,7 @@
     <div id="vertical-text3"></div>
     <div id="vertical-text4"></div>
 
-    <!-- Zone cliquable au centre pour aller vers une autre photospère -->
+    <!-- la fameuse, l'unique, one cliquable pour aller vers photospère2 -->
     <div id="clickable-zone">
         <img src="guardian.png" alt="Guardian">
     </div>
@@ -163,7 +165,7 @@
             } else {
                 typingElement.classList.remove('typing');
                 
-                // Lancer le texte 2 après 4 secondes
+                
                 setTimeout(() => {
                     typingElement2.classList.add('typing');
                     typeWriter2();
@@ -178,7 +180,7 @@
             }, 7000);
         });
 
-        // Texte 2
+        // texte2
         const text2 = "re-regardez le sol, à vos pieds";
         const typingElement2 = document.getElementById('vertical-text2');
         let charIndex2 = 0;
@@ -194,7 +196,7 @@
             } else {
                 typingElement2.classList.remove('typing');
                 
-                // Lancer le texte 3 après 4 secondes
+                // pour lancer el texte quelques temps apprès
                 setTimeout(() => {
                     typingElement3.classList.add('typing');
                     typeWriter3();
@@ -202,7 +204,7 @@
             }
         }
 
-        // Texte 3
+        // texte3
         const text3 = "mon chantier : des errements et sorties de pistes, mes obsessions et liens éblouissants deviennent des canettes allongées le long de la route, signe d'une viré d'ivresse passée, il faut maintenant leur donner consistance en signification pour autrui, réduire leur brillance mais leur permettre au même coup d'accéder à une position de visibilité.";
         const typingElement3 = document.getElementById('vertical-text3');
         let charIndex3 = 0;
@@ -218,7 +220,7 @@
             } else {
                 typingElement3.classList.remove('typing');
                 
-                // Lancer le texte 4 après 4 secondes
+                // idem
                 setTimeout(() => {
                     typingElement4.classList.add('typing');
                     typeWriter4();
@@ -226,7 +228,7 @@
             }
         }
 
-        // Texte 4
+        // texte4
         const text4 = "vous êtes, vous, toujours en 2019, dans la cambrousse à quelques km de la statue pas encore érigée. Zoomer vers le sud-ouest, vers elle.";
         const typingElement4 = document.getElementById('vertical-text4');
         let charIndex4 = 0;
@@ -242,16 +244,16 @@
             } else {
                 typingElement4.classList.remove('typing');
                 
-                // Afficher la zone cliquable 5 secondes après le texte 4
+                // idem mais pourafficher la "zone cliquable" ça veut rien dire aha, 5 secondes après le texte 4
                 setTimeout(() => {
                     document.getElementById('clickable-zone').style.display = 'block';
                 }, 5000);
             }
         }
 
-        // Gestion du clic sur la zone centrale pour rediriger vers une autre photospère
+        // redirige vers phtsph2
         document.getElementById('clickable-zone').addEventListener('click', function() {
-            window.location.href = 'page3.html'; // Remplacez par l'URL de la page avec la photospère
+            window.location.href = 'page3.html'; 
         });
     </script>
 </body>

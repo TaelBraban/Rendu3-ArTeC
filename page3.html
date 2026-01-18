@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- tout de même ça devient maladif, pourquoi ne forqueriez vs pas la page pour rajouter des bails à votre sauce ?? en vrai je parle seule waa aha. bon. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photosphère 3</title>
@@ -214,12 +215,12 @@
     <div id="vertical-text2"></div>
     <div id="vertical-text3"></div>
 
-    <!-- Lien pleine page -->
+    <!-- le lieeen pleine page -->
     <div id="full-page-link">
         <span>vers les carnets en lignes précedents</span>
     </div>
 
-    <!-- Panneau de bas de page -->
+    <!-- le panneau en bas -->
     <div id="bottom-panel">
         <button id="close-panel" title="Fermer">×</button>
         <details>
@@ -276,12 +277,12 @@ des chemins se refermant après mon passage. <br><br> J'ai travaillé avec acqui
             } else {
                 typingElement.classList.remove('typing');
                 
-                // Afficher le panneau de bas de page 18 secondes après
+                // idemtemps
                 setTimeout(() => {
                     document.getElementById('bottom-panel').style.display = 'block';
                 }, 18000);
                 
-                // Lancer le texte 2 après 4 secondes
+                // idemtemps je devrai avoir compris mais bof 
                 setTimeout(() => {
                     typingElement2.classList.add('typing');
                     typeWriter2();
@@ -296,7 +297,7 @@ des chemins se refermant après mon passage. <br><br> J'ai travaillé avec acqui
             }, 7000);
         });
 
-        // Texte 2
+        // Texte2
         const text2 = "";
         const typingElement2 = document.getElementById('vertical-text2');
         let charIndex2 = 0;
@@ -312,7 +313,7 @@ des chemins se refermant après mon passage. <br><br> J'ai travaillé avec acqui
             } else {
                 typingElement2.classList.remove('typing');
                 
-                // Lancer le texte 3 après 4 secondes
+                // ideeeem
                 setTimeout(() => {
                     typingElement3.classList.add('typing');
                     typeWriter3();
@@ -320,7 +321,7 @@ des chemins se refermant après mon passage. <br><br> J'ai travaillé avec acqui
             }
         }
 
-        // Texte 3
+        // Texte3
         const text3 = "";
         const typingElement3 = document.getElementById('vertical-text3');
         let charIndex3 = 0;
@@ -338,20 +339,20 @@ des chemins se refermant après mon passage. <br><br> J'ai travaillé avec acqui
             }
         }
 
-        // Gestion du bouton de fermeture du panneau
+        // le Xcroix
         const closeButton = document.getElementById('close-panel');
         if (closeButton) {
             closeButton.addEventListener('click', function() {
                 document.getElementById('bottom-panel').style.display = 'none';
                 
-                // Afficher le lien pleine page 5 secondes après
+                //ideemtempo
                 setTimeout(() => {
                     document.getElementById('full-page-link').style.display = 'flex';
                 }, 5000);
             });
         }
 
-        // Gestion du clic sur le lien pleine page
+        // leclic
         const fullPageLink = document.getElementById('full-page-link');
         if (fullPageLink) {
             fullPageLink.addEventListener('click', function() {

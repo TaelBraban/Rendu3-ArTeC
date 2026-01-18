@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 2</title>
+    <link rel="icon" type="image/png" href="elsite.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        iframe#panorama {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+            display: block;
+        }
+
+        #vertical-text {
+            position: fixed;
+            top: 150px;
+            left: 40px;
+            max-width: 33vw;
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: white;
+            z-index: 2000;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        #vertical-text.typing::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+
+        #vertical-text2 {
+            position: fixed;
+            top: 125px;
+            left: 40px;
+            max-width: 33vw;
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: white;
+            z-index: 2000;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        #vertical-text2.typing::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+
+        #vertical-text3 {
+            position: fixed;
+            top: 210px;
+            left: 40px;
+            max-width: 33vw;
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: white;
+            z-index: 2000;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        #vertical-text3.typing::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+
+        #vertical-text4 {
+            position: fixed;
+            top: 290px;
+            right: 40px;
+            max-width: 33vw;
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: white;
+            z-index: 2000;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            text-align: right;
+        }
+
+        #vertical-text4.typing::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        #clickable-zone {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 140px;
+            cursor: pointer;
+            z-index: 5500;
+            transition: all 0.3s ease;
+        }
+        
+        /* Tête */
+        #clickable-zone::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+        }
+        
+        /* Corps */
+        #clickable-zone::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 60px;
+            border: 3px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+        }
+        
+        /* Bras gauche levé */
+        .clickable-zone-arm-left {
+            position: absolute;
+            top: 45px;
+            left: 10px;
+            width: 30px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.6);
+            transform: rotate(-45deg);
+            transform-origin: right center;
+        }
+        
+        /* Bras droit levé */
+        .clickable-zone-arm-right {
+            position: absolute;
+            top: 45px;
+            right: 10px;
+            width: 30px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.6);
+            transform: rotate(45deg);
+            transform-origin: left center;
+        }
+
+        #clickable-zone:hover {
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <div id="vertical-text"></div>
+    <div id="vertical-text2"></div>
+    <div id="vertical-text3"></div>
+    <div id="vertical-text4"></div>
+
+    <!-- Zone cliquable au centre pour aller vers une autre photosphère -->
+    <div id="clickable-zone">
+        <div class="clickable-zone-arm-left"></div>
+        <div class="clickable-zone-arm-right"></div>
+    </div>
+
+    <iframe id="panorama" src="https://www.google.com/maps/embed?pb=!4v1768172679683!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ0V3S2pmb0FF!2m2!1d34.76750512789452!2d36.33647428325438!3f220!4f0!5f0.7820865974627469" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <script>
+        const text = "vous prenez quelques pas de recul du panneau pour voir l'état des travaux derrière";
+        const typingElement = document.getElementById('vertical-text');
+        let charIndex = 0;
+        const typingSpeed = 100;
+        const pauseAfterSentence = 500;
+
+        function typeWriter() {
+            if (charIndex < text.length) {
+                typingElement.textContent = text.substring(0, charIndex + 1);
+                const currentChar = text[charIndex];
+                charIndex++;
+                
+                const delay = currentChar === '.' ? typingSpeed + pauseAfterSentence : typingSpeed;
+                setTimeout(typeWriter, delay);
+            } else {
+                typingElement.classList.remove('typing');
+                
+                // Lancer le texte 2 après 4 secondes
+                setTimeout(() => {
+                    typingElement2.classList.add('typing');
+                    typeWriter2();
+                }, 4000);
+            }
+        }
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                typingElement.classList.add('typing');
+                typeWriter();
+            }, 7000);
+        });
+
+        // Texte 2
+        const text2 = "re-regardez le sol, à vos pieds";
+        const typingElement2 = document.getElementById('vertical-text2');
+        let charIndex2 = 0;
+
+        function typeWriter2() {
+            if (charIndex2 < text2.length) {
+                typingElement2.textContent = text2.substring(0, charIndex2 + 1);
+                const currentChar = text2[charIndex2];
+                charIndex2++;
+                
+                const delay = currentChar === '.' ? typingSpeed + pauseAfterSentence : typingSpeed;
+                setTimeout(typeWriter2, delay);
+            } else {
+                typingElement2.classList.remove('typing');
+                
+                // Lancer le texte 3 après 4 secondes
+                setTimeout(() => {
+                    typingElement3.classList.add('typing');
+                    typeWriter3();
+                }, 4000);
+            }
+        }
+
+        // Texte 3
+        const text3 = "mon chantier : des errements et sorties de pistes, mes obsessions et liens éblouissants deviennent des canettes allongées le long de la route, signe d'une viré d'ivresse passée, il faut maintenant leur donner consistance en signification pour autrui, réduire leur brillance mais leur permettre au même coup d'accéder à une position de visibilité.";
+        const typingElement3 = document.getElementById('vertical-text3');
+        let charIndex3 = 0;
+
+        function typeWriter3() {
+            if (charIndex3 < text3.length) {
+                typingElement3.textContent = text3.substring(0, charIndex3 + 1);
+                const currentChar = text3[charIndex3];
+                charIndex3++;
+                
+                const delay = currentChar === '.' ? typingSpeed + pauseAfterSentence : typingSpeed;
+                setTimeout(typeWriter3, delay);
+            } else {
+                typingElement3.classList.remove('typing');
+                
+                // Lancer le texte 4 après 4 secondes
+                setTimeout(() => {
+                    typingElement4.classList.add('typing');
+                    typeWriter4();
+                }, 4000);
+            }
+        }
+
+        // Texte 4
+        const text4 = "vous êtes, vous, toujours en 2019, dans la cambrousse à quelques km de la statue pas encore érigée. Zoomer vers le sud-ouest, vers elle.";
+        const typingElement4 = document.getElementById('vertical-text4');
+        let charIndex4 = 0;
+
+        function typeWriter4() {
+            if (charIndex4 < text4.length) {
+                typingElement4.textContent = text4.substring(0, charIndex4 + 1);
+                const currentChar = text4[charIndex4];
+                charIndex4++;
+                
+                const delay = currentChar === '.' ? typingSpeed + pauseAfterSentence : typingSpeed;
+                setTimeout(typeWriter4, delay);
+            } else {
+                typingElement4.classList.remove('typing');
+                
+                // Afficher la zone cliquable 5 secondes après le texte 4
+                setTimeout(() => {
+                    document.getElementById('clickable-zone').style.display = 'block';
+                }, 5000);
+            }
+        }
+
+        // Gestion du clic sur la zone centrale pour rediriger vers une autre photosphère
+        document.getElementById('clickable-zone').addEventListener('click', function() {
+            window.location.href = 'page3.html'; // Remplacez par l'URL de la page avec la photosphère
+        });
+    </script>
+</body>
+</html>

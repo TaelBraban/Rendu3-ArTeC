@@ -142,6 +142,7 @@
             z-index: 2000;
             white-space: pre-wrap;
             word-wrap: break-word;
+            transition: opacity 0.5s ease;
         }
 
         #typing-text.typing::after {
@@ -167,6 +168,7 @@
             z-index: 2000;
             white-space: pre-wrap;
             word-wrap: break-word;
+            transition: opacity 0.5s ease;
         }
 
         #typing-text2.typing::after {
@@ -187,11 +189,114 @@
             z-index: 2000;
             white-space: pre-wrap;
             word-wrap: break-word;
+            transition: opacity 0.5s ease;
         }
 
         #typing-text3.typing::after {
             content: '|';
             animation: blink 0.7s infinite;
+        }
+
+        #final-text {
+            display: none;
+            position: fixed;
+            bottom: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            max-width: 80vw;
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: white;
+            z-index: 2000;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        #papyrus-panel {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: white;
+            z-index: 6000;
+            overflow-y: auto;
+            padding: 40px;
+            font-family: 'Roboto', sans-serif;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #papyrus-content {
+            color: #333;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        #papyrus-content p {
+            margin-bottom: 20px;
+        }
+
+        #papyrus-content br {
+            display: block;
+            margin: 10px 0;
+            content: "";
+        }
+
+        #clickable-zone {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 370px;
+            height: 300px;
+            cursor: pointer;
+            z-index: 5500;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        #clickable-zone:hover {
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        #additional-text4 {
+            display: none;
+            position: fixed;
+            bottom: 110px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            max-width: 80vw;
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: white;
+            z-index: 2000;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        #additional-text5 {
+            display: none;
+            position: fixed;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            max-width: 80vw;
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: white;
+            z-index: 2000;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
     </style>
 </head>
@@ -202,6 +307,93 @@
    <div id="typing-text2">
    </div>
    <div id="typing-text3">
+   </div>
+
+   <div id="final-text">
+   </div>
+
+   <div id="additional-text4">
+   </div>
+
+   <div id="additional-text5">
+   </div>
+
+   <!-- Zone cliquable au centre pour ouvrir le panneau -->
+   <div id="clickable-zone"></div>
+
+   <!-- Panel papyrus qui apparaît du haut -->
+   <div id="papyrus-panel">
+       <div id="papyrus-content">
+           <p>une statue de la Vierge Marie est érigée en août 2024 à Hawash en Syrie. Elle appartient à l'Eglise maronite. </p>
+<p>Cette statue a son site web dédié. <br> 
+Il sert de promontoire au site touristique, raconte les étapes de construction de la statue mêlé à un récit plus intime, journalier, de la communauté.<br> 
+Un récit de religosité qui vante une maîtrise technologique et technique. " Des médecins spécialisés dans les constructions python " <br>
+Un récit différent selon les interfaces de traductions automatiques et qui, par les erreurs, lapsus, devient un guide non plus uniquement de la statue, mais des interfaces de site-web que l'on utilise. Site². <br>
+Le site-web est en chantier, à peau nue. <br> 
+Ses superstructures sont du prêt à porter occidental, américain, du ciment moulé, des fautes de frappes, photos tumbleresques et oublis laissés, en décalage avec leur mise en valeur d'un imaginaire d'un Proche-Orient " lumineux ". Un imaginaire en essor chez les identitaires chrétiens occidentaux, celui d'un " Orient " qui viendrait secourir un " Occident" pour lui retrouver ses propre traditions dont il aurait perdu le sens, un retour à une terre sacré. 
+Cette terre se dématérialise et n'est foulée uniquement grâce aux sites hébergés en Occident. Il ne reste de marches en lieux saints, que les extraits de pieds qui jonchent les bas des photosphères prises par des utilisateurs. 
+ Innácéssible à pieds mais regard ubiquitaire en hauteur, l'icône d'accessibilité en manteau bleu marial dresse ses bras pour bénir. <br>
+J'utilise toutes les interfaces à portée de main pour traduire, situer. </p>
+
+<p> Et mon utilisation révèle des tropes et symboles propre à la représentation imaginaire du sacré dans l'utilisation même des interfaces standardisées d'internet. 
+Il y a un renversement, une complémentarité. C'est le corps de mon mémoire. </p>
+
+<p> La Vierge s'héberge partout. Les maronites vantent une planéité et une utilisation de cercle. L'orbe bleu de localisation. La Vierge est plate parceque Google ne survole plus cette zone de frontière Syrie-Liban. </p>
+
+<p> Si vous levez les yeux de la tour, de l'avion, ou même du satellite, vous verrez Al-ʿAdhrāʾ (la Vierge) donner une bénédiction au monde.
+Dominic était silencieux. Khalil souri. </p>
+
+<p> Un ciment numérique entre les templates préfabriqués et mon usage a la main bleu, cette aisance d'utiliser les interfaces préfabriqués. La reconstruction et contruction cimentée de la Syrie, des quartiers de la Vallée des Chrétiens qui se parent d'HLM ornés de croix. Le site-web fait de mon pelerinage en terre sainte un pelerinage en terre occidentale, des pied-à-terre sans poser pied, à l'instar de la Vierge dont les pieds ne sont pas sur les mêmes rapports de perspectives sur les peintures maronites. Je me construits un imaginaire sur cet imaginaire scindé et emmêlé de sédiments d'une narration d'un Orient et d'un Occident. </p>
+
+  &nbsp;  &nbsp; " From the West, the light of the East will come to you " <br>
+
+mais lorsqu'on èrre sur le site, on comprend que : <br>
+
+   &nbsp; &nbsp;  " From the East, the light of the West will come to you "
+
+<p> de droite à gauche, de gauche à droite, de l'arabe au français. Je visite cette statue avec les traductions, mouvement de translations, d'une langue à une autre, un site à un autre, copier coller, et cela enrichi les clichés, les titres du site sous mauvaise traduction automatiques deviennent un ramassis entre Al-quaida et le Seigneur des Anneaux. </p>
+</p>
+          
+       </div>
+   </div>
+
+   <!-- Onglet minimaliste pour ouvrir le papyrus -->
+   <div id="papyrus-tab"></div>
+
+   <!-- Panel papyrus qui s'ouvre vers la gauche -->
+   <div id="papyrus-panel">
+       <div id="papyrus-content">
+           <p>une statue de la Vierge Marie est érigée en août 2024 à Hawash en Syrie. Elle appartient à l'Eglise maronite. </p>
+<p>Cette statue a son site web dédié. <br><br>
+Il sert de promontoire au site touristique, raconte les étapes de construction de la statue mêlé à un récit plus intime, journalier, de la communauté.<br> 
+Un récit de religosité qui vante une maîtrise technologique et technique. " Des médecins spécialisés dans les constructions python " <br>
+Un récit différent selon les interfaces de traductions automatiques et qui, par les erreurs, lapsus, devient un guide non plus uniquement de la statue, mais des interfaces de site-web que l'on utilise. Site². <br><br>
+Le site-web est en chantier, à peau nue. <br> <br>
+Ses superstructures sont du prêt à porter occidental, américain, du ciment moulé, des fautes de frappes, photos tumbleresques et oublis laissés, en décalage avec leur mise en valeur d'un imaginaire d'un Proche-Orient " lumineux ". Un imaginaire en essor chez les identitaires chrétiens occidentaux, celui d'un " Orient " qui viendrait secourir un " Occident" pour lui retrouver ses propre traditions dont il aurait perdu le sens, un retour à une terre sacré. 
+Cette terre se dématérialise et n'est foulée uniquement grâce aux sites hébergés en Occident. Il ne reste de marches en lieux saints, que les extraits de pieds qui jonchent les bas des photosphères prises par des utilisateurs. 
+ Innacéssible à pieds mais regard ubiquitaire en hauteur, l'icône d'accessibilité en manteau bleu marial dresse ses bras pour bénir. <br>
+J'utilise toutes les interfaces à portée de main pour traduire, situer. </p> <br><br>
+
+<p> Et mon utilisation révèle des tropes et symboles propre à la représentation imaginaire du sacré dans l'utilisation même des interfaces standardisées d'internet. 
+Il y a un renversement, une complémentarité. C'est le corps de mon mémoire. </p> <br><br>
+
+<p> La Vierge s'héberge partout. Les maronites vantent une planéité et une utilisation de cercle. L'orbe bleu de localisation. La Vierge est plate parceque Google ne survole plus cette zone de frontière Syrie-Liban. </p> <br><br>
+
+<p> Si vous levez les yeux de la tour, de l'avion, ou même du satellite, vous verrez Al-ʿAdhrā' (la Vierge) donner une bénédiction au monde.
+Dominic était silencieux. Khalil souri. </p> <br><br>
+
+<p> Un ciment numérique entre les templates préfabriqués et mon usage a la main bleu, cette aisance d'utiliser les interfaces préfabriqués. La reconstruction et contruction cimentée de la Syrie, des quartiers de la Vallée des Chrétiens qui se parent d'HLM ornés de croix. Le site-web fait de mon pelerinage en terre sainte un pelerinage en terre occidentale, des pied-à-terre sans poser pied, à l'instar de la Vierge dont les pieds ne sont pas sur les mêmes rapports de perspectives sur les peintures maronites. Je me construits un imaginaire sur cet imaginaire scindé et emmêlé de sédiments d'une narration d'un Orient et d'un Occident. </p> <br><br>
+
+  &nbsp;  &nbsp; " From the West, the light of the East will come to you " <br>
+
+mais lorsqu'on èrre sur le site, on comprend que : <br>
+
+   &nbsp; &nbsp;  " From the East, the light of the West will come to you " <br><br>
+
+<p> de droite à gauche, de gauche à droite, de l'arabe au français. Je visite cette statue avec les traductions, mouvement de translations, d'une langue à une autre, un site à un autre, copier coller, et cela enrichi les clichés, les titres du site sous mauvaise traduction automatiques deviennent un ramassis entre Al-quaida et le Seigneur des Anneaux. </p>
+</p>
+          
+       </div>
    </div>
 
    <iframe id="panorama" src="https://www.google.com/maps/embed?pb=!4v1768172679683!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ0V3S2pmb0FF!2m2!1d34.76750512789452!2d36.33647428325438!3f220!4f0!5f0.7820865974627469" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -301,7 +493,7 @@
        }
 
       
-       const text = "Vous êtes en Syrie, en face d'une statue de la Vierge Marie érigée en 2023. Elle est à quelques km vers votre nord, tout droit. Cette photosphère date de 2016, la statue n'existe pas encore. Mais vous êtes pourtant là avec ce savoir"; // Modifiez ce texte
+       const text = "vous êtes en Syrie, en face d'une statue de la Vierge Marie érigée en 2024. elle est à quelques km en face, tout droit. cette photosphère date de 2019, la statue n'existe pas encore. mais vous êtes pourtant là avec ce savoir"; // Modifiez ce texte
        const typingElement = document.getElementById('typing-text');
        let charIndex = 0;
        const typingSpeed = 100; 
@@ -342,10 +534,10 @@
            setTimeout(() => {
                typingElement.classList.add('typing');
                typeWriter();
-           }, 4000);
+           }, 5000);
        });
 
-       const text2 = "Regardez en bas. Il y a les débris de nombreuses constructions de sites, le lieux où l'on retombe = un site-web en arabe : mawqi’ "; // Modifiez ce texte
+       const text2 = "regardez en bas. il y a les débris de nombreuses constructions de sites, le lieux où l'on retombe = un site-web en arabe : mawqi’ "; // Modifiez ce texte
        const typingElement2 = document.getElementById('typing-text2');
        let charIndex2 = 0;
 
@@ -381,7 +573,7 @@
        }
 
      
-       const text3 = "Derrière il y a trois mecs qui matent leurs téls. A droite, il est sur le site dédié à la statue de la Vierge et sa construction, l'autre de l'autre côté tout à gauche, sur mon Hotglue où s'amoncelle mes errements et mes grands airs, et puis le troisième, la main dans la poche, est sur ce site, celui où vous êtes, là. Il attend de pouvoir me saisir, de comprendre, puisqu'il va devenir impatient, comme vous. Le résultat de s'entretenir complaisament dans son mémoire, dans ses obsessions. "; // Modifiez ce texte
+       const text3 = "derrière il y a trois mecs qui matent leurs téls. a droite, il regarde le site dédié à la statue de la Vierge, l'autre tout à gauche, mon Hotglue où s'amoncelle mes errements et mes grands airs, et le troisième, la main dans la poche, est sur ce site, celui où vous êtes, là. il attend de pouvoir me saisir, de comprendre, puisqu'il va devenir impatient, comme vous. le résultat de s'entretenir complaisament dans son mémoire, dans ses obsessions. "; // Modifiez ce texte
        const typingElement3 = document.getElementById('typing-text3');
        let charIndex3 = 0;
 
@@ -397,19 +589,41 @@
            } else {
               
                typingElement3.classList.remove('typing');
+               
+               // Attendre 10 secondes après la fin du texte 3
                setTimeout(() => {
-                  
+                   // Effacer les trois textes d'un coup
+                   typingElement.style.opacity = '0';
+                   typingElement2.style.opacity = '0';
+                   typingElement3.style.opacity = '0';
+                   
+                   // Afficher le texte final centré à la position du texte 2
                    setTimeout(() => {
-                       const link = document.createElement('a');
-                       link.href = 'نور سيأتيك ..'; 
-                       link.download = 'نور سيأتيك ..'; 
-                       document.body.appendChild(link);
-                       link.click();
-                       document.body.removeChild(link);
-                   }, 10000);
-               }, 1000);
+                       document.getElementById('final-text').style.display = 'block';
+                       document.getElementById('final-text').textContent = 'zoomez sur le panneau du chantier';
+                       
+                       // Afficher les deux textes supplémentaires 8 secondes après le texte final
+                       setTimeout(() => {
+                           document.getElementById('additional-text4').style.display = 'block';
+                           document.getElementById('additional-text4').textContent = 'qui explique';
+                           
+                           document.getElementById('additional-text5').style.display = 'block';
+                           document.getElementById('additional-text5').textContent = 'qui se projette';
+                           
+                           // Afficher la zone cliquable 3 secondes après les textes additionnels
+                           setTimeout(() => {
+                               document.getElementById('clickable-zone').style.display = 'block';
+                           }, 3000);
+                       }, 8000);
+                   }, 500);
+               }, 10000);
            }
        }
+
+       // Gestion du clic sur la zone centrale pour rediriger vers un autre site
+       document.getElementById('clickable-zone').addEventListener('click', function() {
+           window.location.href = 'https://www.exemple.com'; // Remplacez par l'URL de destination
+       });
 
     
    </script>

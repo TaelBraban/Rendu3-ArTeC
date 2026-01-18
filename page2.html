@@ -114,66 +114,21 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 120px;
-            height: 140px;
             cursor: pointer;
             z-index: 5500;
             transition: all 0.3s ease;
+            opacity: 0.7;
         }
         
-        /* Tête */
-        #clickable-zone::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 30px;
-            border: 3px solid rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-        }
-        
-        /* Corps */
-        #clickable-zone::after {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 60px;
-            border: 3px solid rgba(255, 255, 255, 0.6);
-            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-        }
-        
-        /* Bras gauche levé */
-        .clickable-zone-arm-left {
-            position: absolute;
-            top: 45px;
-            left: 10px;
-            width: 30px;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.6);
-            transform: rotate(-45deg);
-            transform-origin: right center;
-        }
-        
-        /* Bras droit levé */
-        .clickable-zone-arm-right {
-            position: absolute;
-            top: 45px;
-            right: 10px;
-            width: 30px;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.6);
-            transform: rotate(45deg);
-            transform-origin: left center;
+        #clickable-zone img {
+            display: block;
+            max-width: 200px;
+            height: auto;
         }
 
         #clickable-zone:hover {
-            border-color: rgba(255, 255, 255, 0.6);
-            background: rgba(255, 255, 255, 0.05);
+            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 0.9;
         }
     </style>
 </head>
@@ -183,10 +138,9 @@
     <div id="vertical-text3"></div>
     <div id="vertical-text4"></div>
 
-    <!-- Zone cliquable au centre pour aller vers une autre photosphère -->
+    <!-- Zone cliquable au centre pour aller vers une autre photospère -->
     <div id="clickable-zone">
-        <div class="clickable-zone-arm-left"></div>
-        <div class="clickable-zone-arm-right"></div>
+        <img src="guardian.png" alt="Guardian">
     </div>
 
     <iframe id="panorama" src="https://www.google.com/maps/embed?pb=!4v1768172679683!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ0V3S2pmb0FF!2m2!1d34.76750512789452!2d36.33647428325438!3f220!4f0!5f0.7820865974627469" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -295,9 +249,9 @@
             }
         }
 
-        // Gestion du clic sur la zone centrale pour rediriger vers une autre photosphère
+        // Gestion du clic sur la zone centrale pour rediriger vers une autre photospère
         document.getElementById('clickable-zone').addEventListener('click', function() {
-            window.location.href = 'page3.html'; // Remplacez par l'URL de la page avec la photosphère
+            window.location.href = 'page3.html'; // Remplacez par l'URL de la page avec la photospère
         });
     </script>
 </body>
